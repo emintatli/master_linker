@@ -1,0 +1,294 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@700&display=swap');
+*{
+    font-family: 'Gemunu Libre', sans-serif;
+}
+.logo-text{
+    
+    font-size: 30px;
+    color:rgb(41, 0, 0);
+}
+.nav-item:hover{
+    background-color: rgba(255, 32, 2, 0.377);
+    cursor: pointer;
+}
+.card{
+    background-color: rgba(255, 85, 85, 0.438);
+}
+.footer{
+    background-color: rgba(255, 241, 240, 0.897);
+}
+.footer-logo{
+    font-size: 23px;
+}
+.login-card{
+    background-color: rgba(247, 183, 183, 0.486);
+}
+.text-red{
+    color:rgb(146, 2, 2);
+}
+.chp2{
+border-radius: 15px;
+}
+.chp2-input{
+    background-image: url('../public/2chp.png') ;
+    background-repeat: no-repeat;
+    background-size: 50px;
+    color:black;
+    font-size: larger;
+    font-weight: bolder;
+    
+}
+.chp2-alert{
+padding:3px;
+}
+.welcome-text{
+    font-weight: bold;
+    color:rgb(248, 248, 248);
+}
+.user-card{
+    padding:0;
+    margin:0;
+    background:rgba(0, 0, 0, 0.521);
+    border:rgb(255, 255, 255) 1px solid;
+    border-radius: 5px;
+}
+.dash-menu{
+    padding: 5px;
+    border:none;
+    color:black;
+}
+.dash-menu-card{
+    padding:0;
+}
+.form-check-input:checked{
+    background-color: rgb(255, 144, 144);
+    border: 1px solid white;
+}
+.form-check-input:focus{
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+    border: rgb(255, 144, 144) 1px solid;
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e") !important;
+}
+.form-check-input::before{
+    border: rgb(255, 144, 144) 1px solid;
+   
+}
+.form-check-input::before{
+    border: rgb(255, 144, 144) 1px solid;
+}
+.scroll-div{
+    overflow-y:scroll;
+    height: 200px;
+     background-color: rgb(255, 255, 255);
+     color:#636464;
+}
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 144, 144);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 144, 144);
+    border-radius: 20px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 144, 144);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  .proxy-list-item{
+      background-color:  rgba(255, 144, 144, 0.178);
+      padding:5px;
+      border-radius: 5px;
+      color:black;
+      
+  }
+  .white-back{
+      background-color: white;
+  }
+  .scroll-div-logs{
+    overflow-y:scroll;
+    height: 700px;
+     background-color: rgb(255, 255, 255);
+     color:#636464;
+}
+.back-green{
+    background-color: rgba(65, 236, 31, 0.712);
+}
+.back-yellow{
+    background-color: rgba(222, 236, 31, 0.712);
+}
+#proxy-add-list{
+    height: 300px;
+}
+.text-white{
+    color:white;
+    font-size: larger;
+}
+.profile-card{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 50px;
+}
+.user-card{
+padding: 0;
+margin:0;
+}
+.chart0{
+    display: block;
+    margin: 0 auto;
+    align-items: center;
+}
+body {
+    background-image: url("../public/let-there-be-sun.png");
+    background-color: #cccccc;
+   }
+   .container{
+       padding-bottom: 20px;
+       background-color: rgb(255, 255, 255);
+   }
+   .form-control:focus{
+    border-color:rgb(255, 144, 144);
+    box-shadow: none;
+   }
+   .no-border{
+       border: none;
+   }
+
+
+
+/* common */
+.ribbon {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  display: block;
+  border: 5px solid #ce17179a;
+}
+.ribbon span {
+  position: absolute;
+  display: block;
+    width: 225px;
+  padding: 15px 0;
+  background-color: #cf1919;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  color: #fff;
+  font: 700 18px/1 'Lato', sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* top left*/
+.ribbon-top-left {
+  top: -10px;
+  left: -10px;
+}
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-top-left::before {
+  top: 0;
+  right: 0;
+}
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-top-left span {
+  right: -25px;
+  top: 30px;
+  transform: rotate(-45deg);
+}
+
+/* top right*/
+.ribbon-top-right {
+  top: -10px;
+  right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-top-right::before {
+  top: 0;
+  left: 0;
+}
+.ribbon-top-right::after {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-top-right span {
+  left: -25px;
+  top: 30px;
+  transform: rotate(45deg);
+}
+
+/* bottom left*/
+.ribbon-bottom-left {
+  bottom: -10px;
+  left: -10px;
+}
+.ribbon-bottom-left::before,
+.ribbon-bottom-left::after {
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-bottom-left::before {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-bottom-left::after {
+  top: 0;
+  left: 0;
+}
+.ribbon-bottom-left span {
+  right: -25px;
+  bottom: 30px;
+  transform: rotate(225deg);
+}
+
+/* bottom right*/
+.ribbon-bottom-right {
+  bottom: -10px;
+  right: -10px;
+}
+.ribbon-bottom-right::before,
+.ribbon-bottom-right::after {
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-bottom-right::before {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-bottom-right::after {
+  top: 0;
+  right: 0;
+}
+.ribbon-bottom-right span {
+  left: -25px;
+  bottom: 30px;
+  transform: rotate(-225deg);
+}
