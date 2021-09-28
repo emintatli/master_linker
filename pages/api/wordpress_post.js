@@ -14,20 +14,23 @@ const wordpress={
     puppeteer.use(pluginProxy(proxy));
     puppeteer.use(AdblockerPlugin())
     puppeteer.use(StealthPlugin())
+    console.log("initialize 2")
     puppeteer.use(
         RecaptchaPlugin({
           provider: { id: '2captcha', token: captcha_TOKEN },
           visualFeedback: false // colorize reCAPTCHAs (violet = detected, green = solved)
         })
       )
+      console.log("initialize 3")
     wordpress.browser=await puppeteer.launch({
         headless:true,
         defaultViewport: null,
         args: ['--window-size=1920,1080'],
         slowMo:10,
     });
-    
+    console.log("initialize 4")
     wordpress.page=await wordpress.browser.newPage();
+    console.log("initialize 5")
     let userAgent = new UserAgent();
    await wordpress.page.setUserAgent(userAgent.toString())
    console.log("initialize finished")
