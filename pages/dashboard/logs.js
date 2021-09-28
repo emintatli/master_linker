@@ -21,7 +21,7 @@ export default function Settings(props) {
             'Content-Type': 'application/json'
           },
           body:JSON.stringify({
-            secret:props.secret.secret,
+            secret:props.secret&&props.secret.secret,
           })
         })
         const res=await req.json();

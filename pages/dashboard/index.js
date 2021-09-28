@@ -5,7 +5,7 @@ export async function getServerSideProps(context){
 	const req= context.req;
 return{
 props:{
-secret:req.cookies.secret&&JSON.parse(req.cookies.secret)||""
+secret:req.cookies&&JSON.parse(req.cookies.secret)||""
 }
 }
 }
@@ -28,7 +28,7 @@ export default function Home(props) {
             body:JSON.stringify({
               capi_secret:props.secret.capi,
               do_list:JSON.parse(new_list_textare.current.value),
-              _secret:props.secret.secret
+              _secret:props.secret.secret&&props.secret.secret
             })
           })
           const res=await req.json();

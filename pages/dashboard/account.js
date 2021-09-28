@@ -16,7 +16,7 @@ export default function Account(props) {
     const [secret,setSecret]=useState(false);
     useEffect(async()=>{
           
-        if(props.secret.secret){
+        if(props.secret&&props.secret.secret){
            
             const req =await fetch("/api/get_details",{
               method:"POST",
@@ -24,7 +24,7 @@ export default function Account(props) {
                 'Content-Type': 'application/json'
               },
               body:JSON.stringify({
-                secret:props.secret.secret
+                secret:props.secret&&props.secret.secret
               })
             })
             const res=await req.json();

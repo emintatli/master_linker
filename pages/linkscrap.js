@@ -30,7 +30,7 @@ export default function Navbar(props) {
                 'Content-Type': 'application/json'
               },
               body:JSON.stringify({
-                secret:props.secret.secret,
+                secret:props.secret.secret&&props.secret.secret,
                 csv:csvdata,
                 settings:linkSettings
               })

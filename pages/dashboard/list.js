@@ -51,7 +51,7 @@ export default function Dashmenu(props) {
         document.body.removeChild(element);
       }
     return (<>
-        {props.secret&&props.secret.secret&&<div className="card ">
+        {props.secret&&props.secret&&props.secret.secret&&<div className="card ">
            <div className="card-body">
            <span className="pt-3">Backlink Gönderilecek Site Listesi</span><br/>
            Site listeniz yoksa :<Link href="/linkscrap"><a>Link Ayırıcı</a></Link>

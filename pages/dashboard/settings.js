@@ -28,7 +28,7 @@ export default function Settings(props) {
       const [loadProxy,setLoadProxy]=useState([]);
       useEffect(async()=>{
           
-        if(props.secret.secret){
+        if(props.secret.secret&&props.secret.secret){
             setLoading(true);
             const req =await fetch("/api/get_details",{
               method:"POST",
@@ -36,7 +36,7 @@ export default function Settings(props) {
                 'Content-Type': 'application/json'
               },
               body:JSON.stringify({
-                secret:props.secret.secret
+                secret:props.secret.secret&&props.secret.secret
               })
             })
             const res=await req.json();
@@ -58,7 +58,7 @@ export default function Settings(props) {
             'Content-Type': 'application/json'
           },
           body:JSON.stringify({
-            secret:props.secret.secret,
+            secret:props.secret.secret&&props.secret.secret,
             capi_secret:capi_input.current.value!==""?capi_input.current.value:"empty"
           })
         })
@@ -76,7 +76,7 @@ export default function Settings(props) {
             'Content-Type': 'application/json'
           },
           body:JSON.stringify({
-            secret:props.secret.secret,
+            secret:props.secret.secret&&props.secret.secret,
             random_text_gen:{
                 COMMENT_TEXT:COMMENT_TEXT.current.checked,
                 AUTHOR:AUTHOR.current.checked,
@@ -110,7 +110,7 @@ export default function Settings(props) {
             'Content-Type': 'application/json'
           },
           body:JSON.stringify({
-            secret:props.secret.secret,
+            secret:props.secret.secret&&props.secret.secret,
             proxy_list:new_proxies_ready
           })
         })
