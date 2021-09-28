@@ -15,7 +15,7 @@ export default async function handler (req, res) {
          
         res.setHeader("Set-Cookie",cookie.serialize("secret",JSON.stringify({capi:license_valid.capi_secret,secret:license_valid.secret,user:license_valid.user}),
         {httpOnly:true,
-          secure:process.env.NODE_ENV!=="development", //https
+          // secure:process.env.NODE_ENV!=="development", //https
           maxAge:60*60,
           sameSite:"strict",
           path:"/",
