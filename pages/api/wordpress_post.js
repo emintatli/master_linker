@@ -30,9 +30,12 @@ const wordpress={
     wordpress.page=await wordpress.browser.newPage();
     let userAgent = new UserAgent();
    await wordpress.page.setUserAgent(userAgent.toString())
+   console.log("initialize finished")
 },
     comment:async(BASE_URL,COMMENT_TEXT,AUTHOR,USER_EMAIL,USER_URL,DELAY)=>{
+        console.log("comment started")
         enchantPuppeteer()
+        console.log("comment started 2")
         try{
             console.log("ok")
             await wordpress.page.goto(BASE_URL,{ waitUntil:"networkidle2"});
