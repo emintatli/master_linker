@@ -10,18 +10,18 @@ const wordpress={
     browser:null,
     page:null,
     initialize:async(proxy,captcha_TOKEN)=>{
-    console.log("initialize")
+  
     puppeteer.use(pluginProxy(proxy));
     puppeteer.use(AdblockerPlugin())
     puppeteer.use(StealthPlugin())
-    console.log("initialize 2")
+ 
     puppeteer.use(
         RecaptchaPlugin({
           provider: { id: '2captcha', token: captcha_TOKEN },
           visualFeedback: false // colorize reCAPTCHAs (violet = detected, green = solved)
         })
       )
-      console.log("initialize 3")
+    
       try{
         wordpress.browser=await puppeteer.launch({
             headless:true,
@@ -34,19 +34,19 @@ const wordpress={
           console.log(err)
       }
 
-    console.log("initialize 4")
+   
     wordpress.page=await wordpress.browser.newPage();
-    console.log("initialize 5")
+ 
     let userAgent = new UserAgent();
    await wordpress.page.setUserAgent(userAgent.toString())
-   console.log("initialize finished")
+ 
 },
     comment:async(BASE_URL,COMMENT_TEXT,AUTHOR,USER_EMAIL,USER_URL,DELAY)=>{
-        console.log("comment started")
+     
         enchantPuppeteer()
-        console.log("comment started 2")
+        
         try{
-            console.log("ok")
+           
             await wordpress.page.goto(BASE_URL,{ waitUntil:"networkidle2"});
             
             await wordpress.page.type('textarea[id="comment"]',COMMENT_TEXT,{
@@ -63,7 +63,7 @@ const wordpress={
             })
             await wordpress.page.solveRecaptchas()
             await wordpress.page.click('input[id="submit"]')
-            console.log("ok2")
+           
           
 
             try{
@@ -72,7 +72,7 @@ const wordpress={
 
                if(element.length>0){
                 
-                console.log("ok3")
+              
               // db success !!!
               await wordpress.browser.close();
             return {url:BASE_URL,status:"success"}
@@ -88,11 +88,11 @@ const wordpress={
                 
             
             catch(err){
-                console.log(err,"secSSSSSSS")
+                console.log(err)
             }
         }
         catch(err){
-            console.log(err,"dışardaki")
+            console.log(err)
         }
         finally{
         

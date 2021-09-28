@@ -14,13 +14,10 @@ const main_wp_post=async(captcha_TOKEN,random_text_gen,proxy_list,do_list,user)=
     const database = client.db("slink_api");
     const slink_success = database.collection("success");
     const slink_pending = database.collection("pending");
-    console.log("before for 1")
     for (let i=0;i<=(do_list.length-1);i++){
       
         let selected_proxy=proxy_list[Math.floor(Math.random() * proxy_list.length)];
-        console.log("inside for initialize before")
         await wp_post.initialize(selected_proxy,captcha_TOKEN);
-        console.log("for after nitialize")
        const result_a0= await wp_post.comment(do_list[i].BASE_URL,!random_text_gen.COMMENT_TEXT?do_list[i].COMMENT_TEXT:txtgen.sentence(),
         !random_text_gen.AUTHOR?do_list[i].AUTHOR:random_name(),!random_text_gen.USER_EMAIL?do_list[i].USER_EMAIL:randomEmail(),
         do_list[i].USER_URL,!random_text_gen.DELAY?do_list[i].DELAY:randomIntFromInterval(0, 100));
@@ -37,6 +34,7 @@ const main_wp_post=async(captcha_TOKEN,random_text_gen,proxy_list,do_list,user)=
       }
     }
       catch(err){
+        console.log(err)
       } finally {
         await client.close();
       }
