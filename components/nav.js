@@ -3,7 +3,7 @@ export async function getServerSideProps(context){
 	const req= context.req;
 return{
 props:{
-secret:req.cookies.secret&&JSON.parse(req.cookies.secret)||""
+secret:JSON.parse(req.cookies.secret)||""
 }
 }
 }
@@ -25,7 +25,7 @@ export default function Navbar(props) {
       <li className="nav-item p-2">
       <Link href="/linkscrap"><a className="nav-link active" aria-current="page" >Link Ayrıcı</a></Link>
       </li>
-      {props.secret.secret?<><li className="nav-item p-2">
+      {props.secret&&props.secret.secret?<><li className="nav-item p-2">
       <Link href="/dashboard"><a className="nav-link active " >Backlink Panel</a></Link>
       </li>
       </>:<>
