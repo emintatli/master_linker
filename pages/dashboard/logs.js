@@ -36,22 +36,22 @@ export default function Settings(props) {
 
     return(<>
         <h4>Kayıtlar:</h4>
-        <select onChange={handleChange} class="form-select" aria-label="Default select example">
+        <select onChange={handleChange} className="form-select" aria-label="Default select example">
         <option value="success">Başarılı</option>
         <option value="pending">Onay Bekleyen</option>
         </select>
-          <div class="form-floating">
+          <div className="form-floating">
               <div className="card">
             <div className="card-body scroll-div-logs" disabled>
             {selectBox==="success"&&userData.user_data&&userData.user_data.user_success_data.slice(0).reverse().map(
-                (value)=><div className="d-flex justify-content-between">
+                (value,index)=><div key={index} className="d-flex justify-content-between">
 
 <p className="proxy-list-item back-green">{value.url}</p>
 <p className="proxy-list-item back-green">{value.time?dateFormat(value.time, "dd,mm,yyyy, H:MM:ss"):"?"}</p>
 
                 </div>)}
             {selectBox==="pending"&&userData.user_data&&userData.user_data.user_pending_data.slice(0).reverse().map(
-                (value)=><div className="d-flex justify-content-between">
+                (value,index)=><div key={index} className="d-flex justify-content-between">
 
                 <p className="proxy-list-item back-yellow">{value.url}</p>
                 <p className="proxy-list-item back-yellow">{value.time?dateFormat(value.time, "dd/mm/yyyy H:MM:ss"):"?"}</p>
@@ -60,7 +60,7 @@ export default function Settings(props) {
             </div>
             </div>
             </div>
-            <button disabled={loading} onClick={get_data} type="button" class="btn btn-outline-secondary w-100 mt-2 white-back">Yenile</button>
+            <button disabled={loading} onClick={get_data} type="button" className="btn btn-outline-secondary w-100 mt-2 white-back">Yenile</button>
             
     </>)
 }

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 export async function getServerSideProps(context){
 	const req= context.req;
 return{
@@ -13,28 +14,28 @@ export default function Navbar(props) {
     <nav className="navbar navbar-light bg-light">
 <div className="container-fluid ">
 
-  <a className="navbar-brand d-flex flex-row align-items-center justify-content-center" href="/">
+  <Link href="/"><a className="navbar-brand d-flex flex-row align-items-center justify-content-center" >
   <img src="/circle.png" alt="Master Linker" width="50" height="50" className="d-inline-block align-text-top me-3"/>
   <span className="logo-text">Master Linker</span>
-  </a>
+  </a></Link>
     <ul className="navbar-nav d-flex flex-row border p-1 rounded">
       <li className="nav-item p-2 ">
-        <a className="nav-link active" aria-current="page" href="/">Anasayfa</a>
+      <Link href="/"><a className="nav-link active" aria-current="page">Anasayfa</a></Link>
       </li>
       <li className="nav-item p-2">
-        <a className="nav-link active" aria-current="page" href="/linkscrap">Link Ayrıcı</a>
+      <Link href="/linkscrap"><a className="nav-link active" aria-current="page" >Link Ayrıcı</a></Link>
       </li>
       {props.secret.secret?<><li className="nav-item p-2">
-        <a className="nav-link active " href="/dashboard">Backlink Panel</a>
+      <Link href="/dashboard"><a className="nav-link active " >Backlink Panel</a></Link>
       </li>
       </>:<>
       <li className="nav-item p-2">
-        <a className="nav-link active" href="/login">Giriş yap</a>
+      <Link href="/login"><a className="nav-link active" >Giriş yap</a></Link>
       </li>
       </>}
 
       <li className="nav-item p-2">
-        <a className="nav-link " href="/guides">SSS</a>
+      <Link  href="/guides"><a className="nav-link ">SSS</a></Link>
       </li>
     </ul>
  

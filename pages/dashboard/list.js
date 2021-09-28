@@ -1,6 +1,6 @@
 import {useState,useRef} from "react";
 import { useRouter } from 'next/router';
-
+import Link from 'next/link'
 export async function getServerSideProps(context){
 	const req= context.req;
 return{
@@ -54,10 +54,10 @@ export default function Dashmenu(props) {
         {props.secret.secret&&<div className="card ">
            <div className="card-body">
            <span className="pt-3">Backlink Gönderilecek Site Listesi</span><br/>
-           Site listeniz yoksa :<a href="/linkscrap">Link Ayırıcı</a>
-           <div class="form-floating proxy-list">
-            <textarea onChange={()=>{setEnable2(true)}} ref={backlink_target_url_list} class="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here" id="floatingTextarea0"></textarea>
-            <label for="floatingTextarea">Hedef siteler her satıra 1 adet <br/>
+           Site listeniz yoksa :<Link href="/linkscrap"><a>Link Ayırıcı</a></Link>
+           <div className="form-floating proxy-list">
+            <textarea onChange={()=>{setEnable2(true)}} ref={backlink_target_url_list} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
+            <label htmlFor="floatingTextarea">Hedef siteler her satıra 1 adet <br/>
             https://siteadres.com/3453 <br/>
             https://site123.com/3453 <br/>
             
@@ -67,26 +67,26 @@ export default function Dashmenu(props) {
 
           
            <span className="pt-3">Yorum listesi</span>
-           <div class="form-floating proxy-list">
-            <textarea ref={backlink_target_comment_list} class="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here" id="floatingTextarea1"></textarea>
-            <label for="floatingTextarea">Her satıra 1 yorum (Yorumlar rastgele seçilir, aktif olması için ayarlardan RASTGELE YORUM seçeneğini kapatmanız gerekmektedir.)
+           <div className="form-floating proxy-list">
+            <textarea ref={backlink_target_comment_list} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
+            <label htmlFor="floatingTextarea">Her satıra 1 yorum (Yorumlar rastgele seçilir, aktif olması için ayarlardan RASTGELE YORUM seçeneğini kapatmanız gerekmektedir.)
             
             </label>
           </div>
 
           <span className="pt-3">Ad Soyad Listesi</span>
-           <div class="form-floating proxy-list">
-            <textarea ref={backlink_target_name_list} class="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
-            <label for="floatingTextarea">Her satıra 1 Ad Soyad (Ad Soyad rastgele seçilir, aktif olması için ayarlardan RASTGELE Ad Soyad seçeneğini kapatmanız gerekmektedir.)
+           <div className="form-floating proxy-list">
+            <textarea ref={backlink_target_name_list} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
+            <label htmlFor="floatingTextarea">Her satıra 1 Ad Soyad (Ad Soyad rastgele seçilir, aktif olması için ayarlardan RASTGELE Ad Soyad seçeneğini kapatmanız gerekmektedir.)
             
             </label>
           
            </div>
 
            <span className="pt-3">Email Listesi</span>
-           <div class="form-floating proxy-list">
-            <textarea ref={backlink_target_email_list} class="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here" id="floatingTextarea3"></textarea>
-            <label for="floatingTextarea">Her satıra 1 Email (Email rastgele seçilir, aktif olması için ayarlardan RASTGELE Email seçeneğini kapatmanız gerekmektedir.)
+           <div className="form-floating proxy-list">
+            <textarea ref={backlink_target_email_list} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
+            <label htmlFor="floatingTextarea">Her satıra 1 Email (Email rastgele seçilir, aktif olması için ayarlardan RASTGELE Email seçeneğini kapatmanız gerekmektedir.)
             
             </label>
           
@@ -94,12 +94,12 @@ export default function Dashmenu(props) {
 
           
            <span className="pt-3">Gecikme (ms)</span>
-            <input ref={backlink_target_delay} type="number" class="form-control mt-2" placeholder="Gecikme (ms)  Aktif olması için ayarlardan RASTGELE Gecikme seçeneğini kapatmanız gerekmektedir." aria-label="Username" aria-describedby="basic-addon1"/>
+            <input ref={backlink_target_delay} type="number" className="form-control mt-2" placeholder="Gecikme (ms)  Aktif olması için ayarlardan RASTGELE Gecikme seçeneğini kapatmanız gerekmektedir." aria-label="Username" aria-describedby="basic-addon1"/>
            
 
             <span className="pt-3">Site Adresi (linki eklenecek olan adres)</span>
-            <input onChange={()=>{setEnable(true)}} ref={backlink_target_userweb} type="text" class="form-control mt-2" placeholder="Kişisel web adresinizi yazınız (çıkılan linkler bu adrese olacaktır.)" aria-label="Username" aria-describedby="basic-addon1"/>
-            <button disabled={!enable||!enable2} onClick={create_list} type="button" class="btn btn-outline-secondary w-100 white-back mt-2">Oluştur</button>
+            <input onChange={()=>{setEnable(true)}} ref={backlink_target_userweb} type="text" className="form-control mt-2" placeholder="Kişisel web adresinizi yazınız (çıkılan linkler bu adrese olacaktır.)" aria-label="Username" aria-describedby="basic-addon1"/>
+            <button disabled={!enable||!enable2} onClick={create_list} type="button" className="btn btn-outline-secondary w-100 white-back mt-2">Oluştur</button>
            </div>
         </div>}
        

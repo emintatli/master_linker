@@ -145,31 +145,31 @@ export default function Settings(props) {
           
           </div>
           <div className="alert alert-light d-flex chp2-alert p-3 flex-column" role="alert">
-          <div class="form-check form-switch mb-2">
-            <input ref={COMMENT_TEXT} defaultChecked={settings.COMMENT_TEXT} class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1"/>
-            <label class="form-check-label" for="flexSwitchCheckDefault1">Rastgele yorum üret</label>
+          <div className="form-check form-switch mb-2">
+            <input ref={COMMENT_TEXT} defaultChecked={settings.COMMENT_TEXT} className="form-check-input" type="checkbox" id="flexSwitchCheckDefault1"/>
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault1">Rastgele yorum üret</label>
             </div>
 
-            <div class="form-check form-switch mb-2">
-            <input ref={AUTHOR} defaultChecked={settings.AUTHOR} class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2"/>
-            <label class="form-check-label" for="flexSwitchCheckDefault2">Rastgele ad soyad üret</label>
+            <div className="form-check form-switch mb-2">
+            <input ref={AUTHOR} defaultChecked={settings.AUTHOR} className="form-check-input" type="checkbox" id="flexSwitchCheckDefault2"/>
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault2">Rastgele ad soyad üret</label>
             </div>
 
-            <div class="form-check form-switch mb-2">
-            <input ref={USER_EMAIL} defaultChecked={settings.USER_EMAIL} class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3"/>
-            <label class="form-check-label" for="flexSwitchCheckDefault3">Rastgele e-mail üret</label>
+            <div className="form-check form-switch mb-2">
+            <input ref={USER_EMAIL} defaultChecked={settings.USER_EMAIL} className="form-check-input" type="checkbox" id="flexSwitchCheckDefault3"/>
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault3">Rastgele e-mail üret</label>
             </div>
 
-            <div class="form-check form-switch mb-2">
-            <input ref={DELAY} defaultChecked={settings.DELAY} class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4"/>
-            <label class="form-check-label" for="flexSwitchCheckDefault4">Rastgele gecikme üret</label>
+            <div className="form-check form-switch mb-2">
+            <input ref={DELAY} defaultChecked={settings.DELAY} className="form-check-input" type="checkbox" id="flexSwitchCheckDefault4"/>
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault4">Rastgele gecikme üret</label>
             </div>
  
            
           
           
           </div>
-          <button onClick={send_setting_req} disabled={loading} type="button" class="btn btn-outline-secondary w-100 white-back">Kaydet</button>
+          <button onClick={send_setting_req} disabled={loading} type="button" className="btn btn-outline-secondary w-100 white-back">Kaydet</button>
         </div>
       </div>
       <div className="card w-100 m-2">
@@ -178,7 +178,7 @@ export default function Settings(props) {
           <span className="ms-2 fw-bold">Proxy (Minimum 1 proxy girilmesi gerekmektedir.)</span>
           </div>
           Aktif Proxyler :
-          <div class="form-floating">
+          <div className="form-floating">
               <div className="card">
             <div className="card-body scroll-div" disabled>
             {loadProxy[0]&&loadProxy.map((value)=><><p className="proxy-list-item">{value.address}:{value.port}
@@ -188,11 +188,11 @@ export default function Settings(props) {
             </div>
             
             <div className="pt-3">Yeni Proxy Listesi Ekle <span className="text-white">(Öncekiler Silinir)</span></div>
-            <div class="form-floating proxy-list">
-            <textarea ref={new_proxy_textare} class="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea">Proxy Listesi (Her satıra bir proxy IP:PORT:USERNAME:PASSWORD)</label>
+            <div className="form-floating proxy-list">
+            <textarea ref={new_proxy_textare} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
+            <label htmlFor="floatingTextarea">Proxy Listesi (Her satıra bir proxy IP:PORT:USERNAME:PASSWORD)</label>
           </div>
-          <button onClick={send_new_proxies} disabled={loading} type="button" class="btn btn-outline-secondary w-100 white-back mt-2">Kaydet</button>
+          <button onClick={send_new_proxies} disabled={loading} type="button" className="btn btn-outline-secondary w-100 white-back mt-2">Kaydet</button>
         </div>
       </div>
     </>)

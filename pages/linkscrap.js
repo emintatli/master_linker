@@ -81,27 +81,27 @@ export default function Navbar(props) {
     return (<>
 <span className="fw-bold">Ahrefs dan aldığınız CSV dosyasını yükleyiniz (Microsoft Excel (UTF-16) Formatında olmalıdır.)</span><br/>
 <div>
-  <input class="btn btn-outline-secondary white-back" id="files" type="file" onChange={(e) => showFile(e)} /> 
+  <input className="btn btn-outline-secondary white-back" id="files" type="file" onChange={(e) => showFile(e)} /> 
 </div>
 
 <div className="card mt-1 w-100">
     <div className="card-body white-back">
     Minimum DR
-    <input onChange={(e)=>{setLinkSettings({...linkSettings,min_dr:e.target.value})}}  type="number" class="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
+    <input onChange={(e)=>{setLinkSettings({...linkSettings,min_dr:e.target.value})}}  type="number" className="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
     Minimum UR
-    <input onChange={(e)=>{setLinkSettings({...linkSettings,min_ur:e.target.value})}}  type="number" class="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
+    <input onChange={(e)=>{setLinkSettings({...linkSettings,min_ur:e.target.value})}}  type="number" className="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
     Maksimum Link Çıkışı (External)
-    <input onChange={(e)=>{setLinkSettings({...linkSettings,max_external:e.target.value})}} type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"/>
+    <input onChange={(e)=>{setLinkSettings({...linkSettings,max_external:e.target.value})}} type="number" className="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"/>
 
     
     Link türü
-    <select onChange={(e)=>{setLinkSettings({...linkSettings,type:e.target.value})}} class="form-select" aria-label="Default select example">
+    <select onChange={(e)=>{setLinkSettings({...linkSettings,type:e.target.value})}} className="form-select" aria-label="Default select example">
         <option value="">Hepsi</option>
         <option value="Dofollow">DoFollow</option>
         <option value="Nofollow">NoFollow</option>
         </select>
     </div>
 </div>
-<button disabled={csvdata===""||loading} onClick={scrap_request}  type="button" class="btn btn-outline-secondary w-100 white-back mt-2">Gönder</button>
+<button disabled={csvdata===""||loading} onClick={scrap_request}  type="button" className="btn btn-outline-secondary w-100 white-back mt-2">Gönder</button>
     </>)
 }

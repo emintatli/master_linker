@@ -1,6 +1,6 @@
 import {useState,useRef} from "react";
 import { useRouter } from 'next/router';
-
+import Link from 'next/link'
 export async function getServerSideProps(context){
 	const req= context.req;
 return{
@@ -55,19 +55,19 @@ export default function Home(props) {
        
       <div className="card w-100 m-2">
         <div className="card-body">
-        <div className="pt-3">Yeni Backlink İsteği Gönder <span className="text-white">(Öncekiler devam eder)</span></div> Listeniz yoksa :<a href="/dashboard/list">Liste Oluşturucu</a>
-            <div class="form-floating proxy-list">
-            <textarea ref={new_list_textare} class="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea">Backlink listesi (Liste oluşturucudan aldığınız çıktıyı yapıştırınız)</label>
+        <div className="pt-3">Yeni Backlink İsteği Gönder <span className="text-white">(Öncekiler devam eder)</span></div> Listeniz yoksa :<Link href="/dashboard/list"><a>Liste Oluşturucu</a></Link>
+            <div className="form-floating proxy-list">
+            <textarea ref={new_list_textare} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
+            <label htmlFor="floatingTextarea">Backlink listesi (Liste oluşturucudan aldığınız çıktıyı yapıştırınız)</label>
           </div>
         <button disabled={loading} className="btn btn-outline-secondary w-100 white-back mt-2" onClick={send_req}>Gönder</button>
-        <div class={`alert alert-success mt-2 ${request.message!=="Process has been started."&&"d-none"}`} role="alert">
+        <div className={`alert alert-success mt-2 ${request.message!=="Process has been started."&&"d-none"}`} role="alert">
          <h3> İşlem başlatıldı!</h3> <br/>
          Kayıtlar kısmından işlemlerinizi takip edebilirsiniz. <br/>
           Proxy Sayısı : {request.proxy_count&&request.proxy_count} <br/>
           Toplam Link : {request.total&&request.total}
         </div>
-        <div class={`alert alert-danger mt-2 ${request.message!=="Error occured."&&"d-none"}`} role="alert">
+        <div className={`alert alert-danger mt-2 ${request.message!=="Error occured."&&"d-none"}`} role="alert">
          <h3> İşlem başarısız!</h3> <br/>
          Lütfen Liste Oluştur kısmından aldığınız listeyi düzgün bir biçimde boşluk olmadan ilgili alana giriniz. <br/>
         </div>
