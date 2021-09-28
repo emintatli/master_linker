@@ -33,6 +33,7 @@ const wordpress={
     comment:async(BASE_URL,COMMENT_TEXT,AUTHOR,USER_EMAIL,USER_URL,DELAY)=>{
         enchantPuppeteer()
         try{
+            console.log("ok")
             await wordpress.page.goto(BASE_URL,{ waitUntil:"networkidle2"});
             
             await wordpress.page.type('textarea[id="comment"]',COMMENT_TEXT,{
@@ -49,7 +50,7 @@ const wordpress={
             })
             await wordpress.page.solveRecaptchas()
             await wordpress.page.click('input[id="submit"]')
-
+            console.log("ok2")
           
 
             try{
@@ -58,7 +59,7 @@ const wordpress={
 
                if(element.length>0){
                 
-              
+                console.log("ok3")
               // db success !!!
               await wordpress.browser.close();
             return {url:BASE_URL,status:"success"}
