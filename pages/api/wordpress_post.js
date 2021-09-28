@@ -76,11 +76,11 @@ const wordpress={
                 
             
             catch(err){
-               
+                console.log(err,"secSSSSSSS")
             }
         }
         catch(err){
-            
+            console.log(err,"dışardaki")
         }
         finally{
         
