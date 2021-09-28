@@ -27,7 +27,6 @@ const wordpress={
         defaultViewport: null,
         args: ['--window-size=1920,1080'],
         slowMo:10,
-        timeout: 10000
     });
     console.log("initialize 4")
     wordpress.page=await wordpress.browser.newPage();
