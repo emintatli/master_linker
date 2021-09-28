@@ -22,12 +22,18 @@ const wordpress={
         })
       )
       console.log("initialize 3")
-    wordpress.browser=await puppeteer.launch({
-        headless:true,
-        defaultViewport: null,
-        args: ['--window-size=1920,1080'],
-        slowMo:10,
-    });
+      try{
+        wordpress.browser=await puppeteer.launch({
+            headless:true,
+            defaultViewport: null,
+            args: ['--window-size=1920,1080'],
+            slowMo:10,
+        });
+      }
+      catch(err){
+          console.log(err)
+      }
+
     console.log("initialize 4")
     wordpress.page=await wordpress.browser.newPage();
     console.log("initialize 5")
