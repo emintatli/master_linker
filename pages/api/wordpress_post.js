@@ -10,6 +10,7 @@ const wordpress={
     browser:null,
     page:null,
     initialize:async(proxy,captcha_TOKEN)=>{
+    console.log("initialize")
     puppeteer.use(pluginProxy(proxy));
     puppeteer.use(AdblockerPlugin())
     puppeteer.use(StealthPlugin())
