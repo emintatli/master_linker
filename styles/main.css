@@ -292,3 +292,6 @@ body {
   bottom: 30px;
   transform: rotate(-225deg);
 }
+.border-dotted-danger{
+  border:3px red dotted;
+}
