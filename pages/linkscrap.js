@@ -1,5 +1,7 @@
 import {useState,useRef,useEffect} from "react";
 import Papa from "papaparse";
+import { useRouter } from 'next/router';
+import dateFormat from "dateformat";
 export async function getServerSideProps(context){
 	const req= context.req;
 return{
@@ -11,7 +13,8 @@ secret:req.cookies.secret&&JSON.parse(req.cookies.secret)||""
 export default function Navbar(props) {
     const [loading,setLoading]=useState(false);
     const [csvdata,setCsvData]=useState("");
-    
+    const [file,setfile]=useState(false);
+    const router = useRouter();
 
     const [linkSettings,setLinkSettings]=useState({
         max_external:1000,
@@ -19,6 +22,12 @@ export default function Navbar(props) {
         min_ur:10,
         type:""
     });
+
+    useEffect(()=>{
+      if(!props.secret&&!props.secret.secret){
+        router.push("/login")
+      }
+    },[])
     const scrap_request=async()=>{
         console.log(linkSettings)
         if(csvdata){
@@ -38,8 +47,9 @@ export default function Navbar(props) {
             const res=await req.json();
             console.log(res)
             let text_to_download="";
-            res.data.map((v,i)=>text_to_download=text_to_download+v+(i!==res.data.length-1&&"\n"));
-            download(`list.txt`,text_to_download);
+            res.data.map((v,i)=>text_to_download=text_to_download+v+(i!==res.data.length-1?"\n":""));
+            const now_date=Date.now();
+            download(`scrap_list_${dateFormat(now_date, "dd-mm-yyyy.H_MM")}.txt`,text_to_download);
             setLoading(false);
             
         }
@@ -60,19 +70,26 @@ export default function Navbar(props) {
     }
     const showFile = async (e) => {
         e.preventDefault()
-        const reader = new FileReader()
-        reader.onload = async (e) => { 
-          const text = (e.target.result)
-         
-            Papa.parse(text, {
-                complete: function(results) {
-
-                    setCsvData(results.data);
-                    
-                    
-                }})
-        };
-        reader.readAsText(e.target.files[0])
+        try{
+          const reader = new FileReader()
+          reader.onload = async (e) => { 
+            const text = (e.target.result)
+            console.log(e)
+              Papa.parse(text, {
+                  complete: function(results) {
+  
+                      setCsvData(results.data);
+                      
+                      
+                  }})
+          };
+          reader.readAsText(e.target.files[0])
+          setfile(true)
+        }
+        catch(err){
+          setfile(false)
+        }
+       
       }
       
 
@@ -81,7 +98,9 @@ export default function Navbar(props) {
     return (<>
 <span className="fw-bold">Ahrefs dan aldığınız CSV dosyasını yükleyiniz (Microsoft Excel (UTF-16) Formatında olmalıdır.)</span><br/>
 <div>
-  <input className="btn btn-outline-secondary white-back" id="files" type="file" onChange={(e) => showFile(e)} /> 
+
+  <label style={{backgroundColor:file?"green":"#dc3545"}} htmlFor="files" className="btn btn-outline-secondary white-back text-light"><i className="fas fa-file"></i>{file?"Dosya Seçildi":"Dosyayı seç"}</label>
+  <input  className="" id="files" type="file" style={{display:"none"}} onChange={(e) =>showFile(e) } />
 </div>
 
 <div className="card mt-1 w-100">
@@ -102,6 +121,6 @@ export default function Navbar(props) {
         </select>
     </div>
 </div>
-<button disabled={csvdata===""||loading} onClick={scrap_request}  type="button" className="btn btn-outline-secondary w-100 white-back mt-2">Gönder</button>
+<button disabled={csvdata===""||loading || !file} onClick={scrap_request}   type="button" className="btn btn-outline-secondary w-100 white-back mt-2"><i className="fas fa-paper-plane"></i> Gönder</button>
     </>)
 }

@@ -121,6 +121,7 @@ export default function Settings(props) {
       }
 
     return (<>
+    {loading&&<div className="loading">Loading&#8230;</div>}
           <div className="card w-100 m-2">
         <div className="card-body">
           
@@ -134,7 +135,7 @@ export default function Settings(props) {
 
        
         </div>        
-     <button className="btn btn-outline-secondary white-back w-100" disabled={loading} onClick={send_update_req}>Güncelle</button>
+     <button className="btn btn-outline-secondary white-back w-100" disabled={loading} onClick={send_update_req}><i className="fas fa-save"></i> Kaydet</button>
      </div>
       </div>
       <div className="card w-100 m-2">
@@ -162,14 +163,14 @@ export default function Settings(props) {
 
             <div className="form-check form-switch mb-2">
             <input ref={DELAY} defaultChecked={settings.DELAY} className="form-check-input" type="checkbox" id="flexSwitchCheckDefault4"/>
-            <label className="form-check-label" htmlFor="flexSwitchCheckDefault4">Rastgele gecikme üret</label>
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault4">Rastgele gecikme üret (0-50 ms)</label>
             </div>
  
            
           
           
           </div>
-          <button onClick={send_setting_req} disabled={loading} type="button" className="btn btn-outline-secondary w-100 white-back">Kaydet</button>
+          <button onClick={send_setting_req} disabled={loading} type="button" className="btn btn-outline-secondary w-100 white-back"><i className="fas fa-save"></i> Kaydet</button>
         </div>
       </div>
       <div className="card w-100 m-2">
@@ -192,7 +193,7 @@ export default function Settings(props) {
             <textarea ref={new_proxy_textare} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
             <label htmlFor="floatingTextarea">Proxy Listesi (Her satıra bir proxy IP:PORT:USERNAME:PASSWORD)</label>
           </div>
-          <button onClick={send_new_proxies} disabled={loading} type="button" className="btn btn-outline-secondary w-100 white-back mt-2">Kaydet</button>
+          <button onClick={send_new_proxies} disabled={loading} type="button" className="btn btn-outline-secondary w-100 white-back mt-2"><i className="fas fa-save"></i> Kaydet</button>
         </div>
       </div>
     </>)

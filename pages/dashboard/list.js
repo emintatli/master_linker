@@ -70,7 +70,9 @@ export default function Dashmenu(props) {
            <div className="form-floating proxy-list">
             <textarea ref={backlink_target_comment_list} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
             <label htmlFor="floatingTextarea">Her satıra 1 yorum (Yorumlar rastgele seçilir, aktif olması için ayarlardan RASTGELE YORUM seçeneğini kapatmanız gerekmektedir.)
-            
+            <br/>
+           <b className="text-danger"> Yoruma link eklemek isterseniz {`<a href="https://www.google.com"> Yazı buraya</a>`} şeklinde link ekleyebilirsiniz <br/></b>(spam filtrelerine takılmasına neden olabilir , zaten kullanıcı adı üzerine site linkiniz veriliyor.)
+            <br/>Her satıra bir yorum yazdığınıza emin olun !
             </label>
           </div>
 
@@ -94,12 +96,12 @@ export default function Dashmenu(props) {
 
           
            <span className="pt-3">Gecikme (ms)</span>
-            <input ref={backlink_target_delay} type="number" className="form-control mt-2" placeholder="Gecikme (ms)  Aktif olması için ayarlardan RASTGELE Gecikme seçeneğini kapatmanız gerekmektedir." aria-label="Username" aria-describedby="basic-addon1"/>
+            <input defaultValue="0" ref={backlink_target_delay} type="number" className="form-control mt-2" placeholder="Gecikme (ms)  Aktif olması için ayarlardan RASTGELE Gecikme seçeneğini kapatmanız gerekmektedir." aria-label="Username" aria-describedby="basic-addon1"/>
            
 
             <span className="pt-3">Site Adresi (linki eklenecek olan adres)</span>
             <input onChange={()=>{setEnable(true)}} ref={backlink_target_userweb} type="text" className="form-control mt-2" placeholder="Kişisel web adresinizi yazınız (çıkılan linkler bu adrese olacaktır.)" aria-label="Username" aria-describedby="basic-addon1"/>
-            <button disabled={!enable||!enable2} onClick={create_list} type="button" className="btn btn-outline-secondary w-100 white-back mt-2">Oluştur</button>
+            <button disabled={!enable||!enable2} onClick={create_list} type="button" className="btn btn-outline-secondary w-100 white-back mt-2"><i className="fas fa-plus-circle"></i> Oluştur</button>
            </div>
         </div>}
        

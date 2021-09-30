@@ -12,6 +12,8 @@ secret:req.cookies&&JSON.parse(req.cookies.secret)||""
 export default function Home(props) {
   const [loading,setLoading]=useState(false);
   const new_list_textare=useRef();
+  const [status,setStatus]=useState("?");
+  const [active,setActive]=useState(false);
   const [request,setRequest]=useState({
     message:""
   });
@@ -41,6 +43,24 @@ export default function Home(props) {
 
     }
 
+    const send_status_refresh_req=async()=>{
+      setLoading(true)
+      const req =await fetch("/api/get_status",{
+        method:"POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+          secret:props.secret.secret&&props.secret.secret
+        })
+      })
+      const res=await req.json();
+      console.log(res)
+      setStatus(res.status);
+      setLoading(false);
+
+    }
+
 
     return (
       <>
@@ -52,15 +72,22 @@ export default function Home(props) {
          <span className="welcome-text">Hoşgeldiniz , {props.secret.user}</span>
          </div>
         </div>
-       
+
       <div className="card w-100 m-2">
         <div className="card-body">
-        <div className="pt-3">Yeni Backlink İsteği Gönder <span className="text-white">(Öncekiler devam eder)</span></div> Listeniz yoksa :<Link href="/dashboard/list"><a>Liste Oluşturucu</a></Link>
+        <div className="pt-3">Yeni Backlink İsteği Gönder</div> Listeniz yoksa :<Link href="/dashboard/list"><a>Liste Oluşturucu</a></Link>
+           <div className="card black-back">
+             <div className="card-body d-flex align-items-center justify-content-center text-light flex-column">
+               <div className="d-flex mb-1">
+            <h3>{"Program Durumu : "+status}</h3> <button disabled={loading} onClick={send_status_refresh_req} type="button" className="btn btn-outline-danger ms-5"><i className="fas fa-sync-alt"></i> Yenile</button></div>
+            DEVAM EDEN İŞLEM VARSA BİTENE KADAR BEKLEYİNİZ!
+             </div>
+           </div>
             <div className="form-floating proxy-list">
-            <textarea ref={new_list_textare} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
+            <textarea onChange={()=>{new_list_textare.current.value!==""?setActive(true):setActive(false)}} ref={new_list_textare} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
             <label htmlFor="floatingTextarea">Backlink listesi (Liste oluşturucudan aldığınız çıktıyı yapıştırınız)</label>
           </div>
-        <button disabled={loading} className="btn btn-outline-secondary w-100 white-back mt-2" onClick={send_req}>Gönder</button>
+        <button disabled={loading || !active} className="btn btn-outline-secondary w-100 white-back mt-2" onClick={send_req}><i className="fas fa-paper-plane"></i> Gönder</button>
         <div className={`alert alert-success mt-2 ${request.message!=="Process has been started."&&"d-none"}`} role="alert">
          <h3> İşlem başlatıldı!</h3> <br/>
          Kayıtlar kısmından işlemlerinizi takip edebilirsiniz. <br/>

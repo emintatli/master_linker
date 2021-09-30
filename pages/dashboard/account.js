@@ -95,6 +95,7 @@ export default function Account(props) {
 
 
     return(<>
+    {loading&&<div className="loading">Loading&#8230;</div>}
     <div className="card">
         <div className="card-body white-back user-card d-flex flex-column align-items-center">
           <div className="d-flex w-100">
@@ -103,17 +104,17 @@ export default function Account(props) {
           
           
             <span>Kullanıcı Adı: {userdetails&&userdetails.user}</span><br/>
-            <span>Gizli Anahtar: <span className="text-danger">{userdetails&&secret?userdetails.secret:<button className="btn btn-outline-danger btn-sm" onClick={()=>{setSecret(true)}}>Göster</button>}</span></span><br/>
+            <span>Gizli Anahtar: <span className="text-danger">{userdetails&&secret?userdetails.secret:<button className="btn btn-outline-danger btn-sm" onClick={()=>{setSecret(true)}}><i className="fas fa-eye"></i> Göster</button>}</span></span><br/>
             <span>Lisans bitiş tarihi: {userdetails&&dateFormat(new Date(parseInt(userdetails.expire)), "dd/mm/yyyy H:MM")}</span><br/>
             </div>
             <div className="card p-2 w-100 white-back">
             <h3>Diğer İşlemler:</h3>
             <Link href="/" ><a className="btn btn-outline-danger btn-sm mb-2 disabled" >Lisans Süresi Uzat</a></Link>
-            <button onClick={send_logout_req} className="btn btn-outline-danger btn-sm mb-2" disabled={loading}>Çıkış Yap</button>
+            <button onClick={send_logout_req} className="btn btn-outline-danger btn-sm mb-2" disabled={loading}><i className="fas fa-sign-out-alt"></i> Çıkış Yap</button>
 
             <div className="d-flex flex-column mt-4 border-dotted-danger p-2">
-            <button onClick={send_log_delete_req} className="btn btn-danger btn-sm mb-2" disabled={loading}>Kayıtları Sil</button>
-            <button  onClick={send_reboot_req} className="btn btn-danger btn-sm mb-2" disabled={loading}>Sunucu Reboot</button>
+            <button onClick={send_log_delete_req} className="btn btn-danger btn-sm mb-2" disabled={loading}><i className="fas fa-exclamation-triangle"></i> Kayıtları Sil</button>
+            <button  onClick={send_reboot_req} className="btn btn-danger btn-sm mb-2" disabled={loading}><i className="fas fa-exclamation-triangle"></i> Sunucu Reboot</button>
             </div>
             </div>
           

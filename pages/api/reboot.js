@@ -14,7 +14,6 @@ export default async function handler (req, res) {
             require('child_process').exec('sudo /sbin/shutdown -r now', function (msg) { console.log(msg) });
       
             res.send(JSON.stringify({
-                data:last_data,
                 success:true,
             }))
         }

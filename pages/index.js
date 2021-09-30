@@ -16,7 +16,7 @@ export default function Home(props) {
   
   return (
    <>
-  <div className="d-flex">
+  <div className="d-flex mobile-cards">
     <div className="card w-100 m-3 border-2">
       <div className="card-body white-back d-flex flex-column align-items-center">
         <h1>1 Ay</h1>

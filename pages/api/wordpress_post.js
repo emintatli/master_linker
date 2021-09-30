@@ -5,6 +5,7 @@ const { enchantPuppeteer } = require('enchant-puppeteer');
 const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 const UserAgent = require('user-agents');
+const cheerio = require('cheerio');
 
 const wordpress={
     browser:null,
@@ -68,9 +69,24 @@ const wordpress={
 
             try{
                await wordpress.page.goto(BASE_URL,{ waitUntil:"networkidle2"});
-                const element = await wordpress.page.$x(`//p[contains(text(),"${COMMENT_TEXT}")]`)
-
-               if(element.length>0){
+               const cheer = cheerio.load(COMMENT_TEXT);
+               let link=false;
+               let element=[];
+               if(cheer("a").first().attr('href')!==undefined && cheer("a").first().attr('href')!==null){
+                const link2= await wordpress.page.$(`a[href*="${cheer("a").first().attr('href')}"]`);
+                if(link2){
+                    console.log("ok buldum")
+                    link=true;
+                }
+               }
+               else{
+                   console.log("2.asdasdas")
+                 element = await wordpress.page.$x(`//*[contains(text(),"${COMMENT_TEXT}")]`)
+               }
+                
+               
+               
+               if(element.length>0 || link){
                 
               
               // db success !!!
@@ -89,10 +105,12 @@ const wordpress={
             
             catch(err){
                 console.log(err)
+                return {url:BASE_URL,status:"pending"}
             }
         }
         catch(err){
             console.log(err)
+            return {url:BASE_URL,status:"error"}
         }
         finally{
         
