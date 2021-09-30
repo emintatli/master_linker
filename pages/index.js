@@ -29,7 +29,7 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
     </ul>
     
-    <Link href="http://go.massl.ink/1"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
+    <Link href="http://go.massl.ink/redirect/buy/?id=1"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
       </div>
     </div>
 
@@ -46,7 +46,7 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
     </ul>
     
-    <Link href="http://go.massl.ink/2"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
+    <Link href="http://go.massl.ink/redirect/buy/?id=2"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
       </div>
     </div>
 
@@ -63,7 +63,7 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
     </ul>
     
-    <Link href="http://go.massl.ink/3"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
+    <Link href="http://go.massl.ink/redirect/buy/?id=3"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
       </div>
     </div>
     </div>
