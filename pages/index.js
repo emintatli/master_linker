@@ -28,7 +28,7 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
       <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
-    <span className="text-secondary">*Fiyata sunucu masrafları dahil değildir.</span>
+    
     <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
       </div>
     </div>
@@ -46,7 +46,7 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
       <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
-    <span className="text-secondary">*Fiyata sunucu masrafları dahil değildir.</span>
+    
     <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
       </div>
     </div>
@@ -64,7 +64,7 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
       <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
-    <span className="text-secondary">*Fiyata sunucu masrafları dahil değildir.</span>
+    
     <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
       </div>
     </div>
