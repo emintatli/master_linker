@@ -24,7 +24,7 @@ export default function Home(props) {
     <img className="mb-4" src="/circle0.png"/>
     <ul>
       <li>Ücretsiz destek</li>
-      <li>1 Aylık Master Linker deneyimi</li>
+      <li>1 Aylık Masslink deneyimi</li>
       <li>Ücretsiz Kurulum/Aktivasyon</li>
       <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
@@ -42,7 +42,7 @@ export default function Home(props) {
     <img className="mb-4" src="/circle2.png"/>
     <ul>
       <li>Ücretsiz destek</li>
-      <li>3 Aylık Master Linker deneyimi</li>
+      <li>3 Aylık Masslink deneyimi</li>
       <li>Ücretsiz Kurulum/Aktivasyon</li>
       <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
@@ -60,7 +60,7 @@ export default function Home(props) {
     <img className="mb-4" src="/circle3.png"/>
     <ul>
       <li>Ücretsiz destek</li>
-      <li>6 Aylık Master Linker deneyimi</li>
+      <li>6 Aylık Masslink deneyimi</li>
       <li>Ücretsiz Kurulum/Aktivasyon</li>
       <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>

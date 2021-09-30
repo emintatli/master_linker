@@ -15,8 +15,8 @@ export default function Navbar(props) {
 <div className="container-fluid mobile-nav w-100">
 
   <Link href="/"><a className="navbar-brand d-flex flex-row align-items-center justify-content-center" >
-  <img src="/circle.png" alt="Master Linker" width="50" height="50" className="d-inline-block align-text-top me-3"/>
-  <span className="logo-text">Master Linker </span>
+  <img src="/circle.png" alt="Masslink" width="50" height="50" className="d-inline-block align-text-top me-3"/>
+  <span className="logo-text">Masslink </span>
   </a></Link>
     <ul className="navbar-nav d-flex flex-row border p-1 rounded">
       <li className="nav-item p-2 ">

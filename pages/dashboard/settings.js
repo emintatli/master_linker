@@ -23,7 +23,7 @@ export default function Settings(props) {
       useEffect(async()=>{
           
         if(props.secret.secret&&props.secret.secret){
-            setLoading(true);
+           
             const req =await fetch("/api/get_details",{
               method:"POST",
               headers: {
@@ -38,7 +38,7 @@ export default function Settings(props) {
             settwoChap(res.capi_secret)
             setSettings(res.random_text_gen)
             setLoadProxy(res.proxy_list);
-            setLoading(false);
+            
         }
        
 
