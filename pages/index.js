@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
+import Link from 'next/link'
 export async function getServerSideProps(context){
 	const req= context.req;
 return{
@@ -26,10 +27,9 @@ export default function Home(props) {
       <li>Ücretsiz destek</li>
       <li>1 Aylık Masslink deneyimi</li>
       <li>Ücretsiz Kurulum/Aktivasyon</li>
-      <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
     
-    <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
+    <Link href="http://go.massl.ink/1"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
       </div>
     </div>
 
@@ -44,10 +44,9 @@ export default function Home(props) {
       <li>Ücretsiz destek</li>
       <li>3 Aylık Masslink deneyimi</li>
       <li>Ücretsiz Kurulum/Aktivasyon</li>
-      <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
     
-    <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
+    <Link href="http://go.massl.ink/2"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
       </div>
     </div>
 
@@ -62,10 +61,9 @@ export default function Home(props) {
       <li>Ücretsiz destek</li>
       <li>6 Aylık Masslink deneyimi</li>
       <li>Ücretsiz Kurulum/Aktivasyon</li>
-      <li>Ücretsiz sunucu paketi yükseltme/indirme</li>
     </ul>
     
-    <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
+    <Link href="http://go.massl.ink/3"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
       </div>
     </div>
     </div>
