@@ -29,13 +29,13 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
     </ul>
     
-    <Link href="http://go.massl.ink/redirect/buy/?id=1"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
+   <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
       </div>
     </div>
 
 
     <div className="card w-100 m-3 border-2 p-2">
-    <div className="ribbon ribbon-top-left"><span>%25 İNDİRİM</span></div>
+    <div className="ribbon ribbon-top-left"><span>İNDİRİMLİ</span></div>
       <div className="card-body white-back d-flex flex-column align-items-center">
         <h1>3 Ay</h1>
        
@@ -46,13 +46,13 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
     </ul>
     
-    <Link href="http://go.massl.ink/redirect/buy/?id=2"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
+    <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
       </div>
     </div>
 
 
     <div className="card w-100 m-3 border-2">
-    <div className="ribbon ribbon-top-left"><span>%30 İNDİRİM</span></div>
+    <div className="ribbon ribbon-top-left"><span>İNDİRİMLİ</span></div>
       <div className="card-body white-back d-flex flex-column align-items-center">
         <h1>6 Ay</h1>
        
@@ -63,7 +63,7 @@ export default function Home(props) {
       <li>Ücretsiz Kurulum/Aktivasyon</li>
     </ul>
     
-    <Link href="http://go.massl.ink/redirect/buy/?id=3"><a type="button" className="btn btn-outline-secondary">Satın Al</a></Link>
+   <button disabled type="button" className="btn btn-outline-secondary">Satın Al</button>
       </div>
     </div>
     </div>
