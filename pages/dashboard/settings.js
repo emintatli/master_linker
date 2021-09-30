@@ -18,13 +18,7 @@ export default function Settings(props) {
     const [loading,setLoading]=useState(false);
     const new_proxy_textare=useState();
     const [twoChap,settwoChap]=useState("");
-    const [settings,setSettings]=useState({
-        COMMENT_TEXT:true,
-        AUTHOR:true,
-        USER_EMAIL:true,
-        DELAY:true,
-        success:true,
-      });
+    const [settings,setSettings]=useState("");
       const [loadProxy,setLoadProxy]=useState([]);
       useEffect(async()=>{
           
