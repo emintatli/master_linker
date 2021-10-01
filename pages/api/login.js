@@ -1,4 +1,4 @@
-const uri ="mongodb://megamen:5yw4ggw5yrfeAA173f63d@65.108.94.215:27017/?authSource=admin&readPreference=primary&directConnection=true&ssl=false";
+const uri ="mongodb+srv://autorun12:satellitea10@cluster0.1dybm.mongodb.net"
 import { MongoClient } from "mongodb";
 import cookie from "cookie"
 export default async function handler (req, res) {
