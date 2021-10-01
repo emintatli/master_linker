@@ -28,11 +28,7 @@ const wordpress={
         wordpress.browser=await puppeteer.launch({
             headless:true,
             defaultViewport: null,
-            args: ['--window-size=1920,1080','--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage','--disable-accelerated-2d-canvas',
-            '--no-first-run',
-            '--no-zygote',
-            '--single-process',
-            '--disable-gpu'],
+            args: ['--window-size=1920,1080','--no-sandbox'],
             slowMo:10,
         });
       }
