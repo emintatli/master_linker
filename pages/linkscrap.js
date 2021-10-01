@@ -15,11 +15,13 @@ export default function Navbar(props) {
     const [csvdata,setCsvData]=useState("");
     const [file,setfile]=useState(false);
     const router = useRouter();
-
+    const dr_ref=useRef();
+    const ur_ref=useRef();
+    const external_ref=useRef();
     const [linkSettings,setLinkSettings]=useState({
-        max_external:1000,
-        min_dr:10,
-        min_ur:10,
+        max_external:10000000000000,
+        min_dr:0,
+        min_ur:0,
         type:""
     });
 
@@ -29,10 +31,11 @@ export default function Navbar(props) {
       }
     },[])
     const scrap_request=async()=>{
+      
         console.log(linkSettings)
         if(csvdata){
             setLoading(true);
-
+          console.log(linkSettings)
             const req =await fetch("/api/excel_todata",{
               method:"POST",
               headers: {
@@ -45,7 +48,6 @@ export default function Navbar(props) {
               })
             })
             const res=await req.json();
-            console.log(res)
             let text_to_download="";
             res.data.map((v,i)=>text_to_download=text_to_download+v+(i!==res.data.length-1?"\n":""));
             const now_date=Date.now();
@@ -106,11 +108,11 @@ export default function Navbar(props) {
 <div className="card mt-1 w-100">
     <div className="card-body white-back">
     Minimum DR
-    <input onChange={(e)=>{setLinkSettings({...linkSettings,min_dr:e.target.value})}}  type="number" className="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
+    <input ref={dr_ref} onChange={(e)=>{setLinkSettings({...linkSettings,min_dr:e.target.value})}}  type="number" className="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
     Minimum UR
-    <input onChange={(e)=>{setLinkSettings({...linkSettings,min_ur:e.target.value})}}  type="number" className="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
+    <input ref={ur_ref} onChange={(e)=>{setLinkSettings({...linkSettings,min_ur:e.target.value})}}  type="number" className="form-control" placeholder="0-100" aria-label="Username" aria-describedby="basic-addon1"/>
     Maksimum Link Çıkışı (External)
-    <input onChange={(e)=>{setLinkSettings({...linkSettings,max_external:e.target.value})}} type="number" className="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"/>
+    <input ref={external_ref} onChange={(e)=>{setLinkSettings({...linkSettings,max_external:e.target.value})}} type="number" className="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"/>
 
     
     Link türü
