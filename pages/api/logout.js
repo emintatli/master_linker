@@ -4,7 +4,7 @@ import cookie from "cookie"
 
 export default async function handler (req, res) {
     if(req.body.secret){
-      const uri ="mongodb://megamen:5yw4ggw5yrfeAA173f*-63d@127.0.0.1:27017";
+        const uri ="mongodb+srv://autorun12:satellitea10@cluster0.1dybm.mongodb.net";
         const client = new MongoClient(uri);
         try {
             await client.connect();
