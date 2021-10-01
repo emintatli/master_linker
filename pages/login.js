@@ -44,7 +44,7 @@ export default function Home(props) {
     return(!props.secret&&<div className="d-flex flex-column align-items-center justify-content-center">
     {
        login_err&&<div className="alert alert-light text-red" role="alert">
-        A simple light alert—check it out!
+        Key yanlış veya hata oluştu!
       </div>
 
     }
