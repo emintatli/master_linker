@@ -6,7 +6,7 @@ const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 const UserAgent = require('user-agents');
 const cheerio = require('cheerio');
-
+import set from "../../set";
 const wordpress={
     browser:null,
     page:null,

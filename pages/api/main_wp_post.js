@@ -3,15 +3,16 @@ const txtgen = require('txtgen');
 const random_name = require('random-name')
 const randomEmail = require('random-email');
 import { MongoClient } from "mongodb";
+import set from "../../set";
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 const main_wp_post=async(captcha_TOKEN,random_text_gen,proxy_list,do_list,user)=>{
- const uri =process.env.DB_CONN
+ const uri =set.DB_CONN
  const client = new MongoClient(uri);
   try {
     await client.connect();
-    const database = client.db(process.env.DB_SELECT);
+    const database = client.db(set.DB_SELECT);
     const slink_license = database.collection("license");
     const slink_success = database.collection("success");
     const slink_pending = database.collection("pending");

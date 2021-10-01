@@ -1,13 +1,13 @@
 const wp=require("./main_wp_post")
 import { MongoClient } from "mongodb";
-const uri =process.env.DB_CONN
+const uri =set.DB_CONN
 const client = new MongoClient(uri);
-
+import set from "../../set";
 
   export default async function handler (req, res) {
     try {
         await client.connect();
-        const database = client.db(process.env.DB_SELECT);
+        const database = client.db(set.DB_SELECT);
         const license_col = database.collection("license");
         const query = { secret: req.body._secret };
         const license_valid = await license_col.findOne(query);

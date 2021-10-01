@@ -1,21 +1,21 @@
 import { MongoClient } from "mongodb";
 import cookie from "cookie"
-
+import set from "../../set";
 
 export default async function handler (req, res) {
   if(req.body.secret){
     // res.setHeader("Set-Cookie",cookie.serialize("secret","",
     // {httpOnly:true,
-    //   secure:process.env.NODE_ENV!=="development", //https
+    //   secure:set.NODE_ENV!=="development", //https
     //   maxAge:0,
     //   sameSite:"strict",
     //   path:"/",
     // }))
-    const uri =process.env.DB_CONN;
+    const uri =set.DB_CONN;
     const client = new MongoClient(uri);
     try {
         await client.connect();
-        const database = client.db(process.env.DB_SELECT);
+        const database = client.db(set.DB_SELECT);
         const license_col = database.collection("license");
         const filter = { secret:req.body.secret };
         if(req.body.capi_secret){
