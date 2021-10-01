@@ -1,4 +1,4 @@
-const uri ="mongodb+srv://autorun12:satellitea10@cluster0.1dybm.mongodb.net"
+const uri =process.env.DB_CONN
 import { MongoClient } from "mongodb";
 
 export default async function handler (req, res) {
@@ -6,7 +6,7 @@ export default async function handler (req, res) {
     const client = new MongoClient(uri);
 
         await client.connect();
-        const database = client.db("slink_api");
+        const database = client.db(process.env.DB_SELECT);
         const license_col = database.collection("license");
         const query = { secret: req.body.secret };
         const license_valid = await license_col.findOne(query);

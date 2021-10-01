@@ -1,13 +1,13 @@
 const wp=require("./main_wp_post")
 import { MongoClient } from "mongodb";
-const uri ="mongodb+srv://autorun12:satellitea10@cluster0.1dybm.mongodb.net"
+const uri =process.env.DB_CONN
 const client = new MongoClient(uri);
 
 
   export default async function handler (req, res) {
     try {
         await client.connect();
-        const database = client.db("slink_api");
+        const database = client.db(process.env.DB_SELECT);
         const license_col = database.collection("license");
         const query = { secret: req.body._secret };
         const license_valid = await license_col.findOne(query);
