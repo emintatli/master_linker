@@ -6,7 +6,6 @@ const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 const UserAgent = require('user-agents');
 const cheerio = require('cheerio');
-import set from "../../set";
 const wordpress={
     browser:null,
     page:null,
@@ -15,7 +14,9 @@ const wordpress={
     puppeteer.use(pluginProxy(proxy));
     puppeteer.use(AdblockerPlugin())
     puppeteer.use(StealthPlugin())
- 
+    puppeteer.use(require('puppeteer-extra-plugin-block-resources')({
+        blockedTypes: new Set(['image', 'stylesheet'])
+      }))
     puppeteer.use(
         RecaptchaPlugin({
           provider: { id: '2captcha', token: captcha_TOKEN },
@@ -27,7 +28,11 @@ const wordpress={
         wordpress.browser=await puppeteer.launch({
             headless:true,
             defaultViewport: null,
-            args: ['--window-size=1920,1080','--no-sandbox'],
+            args: ['--window-size=1920,1080','--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage','--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process',
+            '--disable-gpu'],
             slowMo:10,
         });
       }
