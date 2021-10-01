@@ -1,4 +1,4 @@
-const uri ="mongodb://localhost:27017";
+const uri ="mongodb://megamen:5yw4ggw5yrfeAA173f63d@65.108.94.215:27017";
 import { MongoClient } from "mongodb";
 import cookie from "cookie"
 export default async function handler (req, res) {
