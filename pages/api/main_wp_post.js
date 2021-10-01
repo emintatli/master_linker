@@ -7,7 +7,7 @@ function randomIntFromInterval(min, max) { // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 const main_wp_post=async(captcha_TOKEN,random_text_gen,proxy_list,do_list,user)=>{
- const uri ="mongodb+srv://autorun12:satellitea10@cluster0.1dybm.mongodb.net"
+  const uri ="mongodb://megamen:5yw4ggw5yrfeAA173f*-63d@127.0.0.1:27017";
  const client = new MongoClient(uri);
   try {
     await client.connect();
