@@ -87,8 +87,7 @@ export default function Home(props) {
             <textarea onChange={()=>{new_list_textare.current.value!==""?setActive(true):setActive(false)}} ref={new_list_textare} className="form-control" style={{height:300}} id="proxy-add-list" placeholder="Leave a comment here"></textarea>
             <label htmlFor="floatingTextarea">Backlink listesi (Liste oluşturucudan aldığınız çıktıyı yapıştırınız)</label>
           </div>
-          {/* disabled={loading || !active}  */}
-        <button disabled={true} className="btn btn-outline-secondary w-100 white-back mt-2" onClick={send_req}><i className="fas fa-paper-plane"></i>DEMO sürümünde açık değildir.(birden fazla kullanıcı aynı anda kullanamaz)</button>
+        <button disabled={loading || !active} className="btn btn-outline-secondary w-100 white-back mt-2" onClick={send_req}><i className="fas fa-paper-plane"></i> Gönder</button>
         <div className={`alert alert-success mt-2 ${request.message!=="Process has been started."&&"d-none"}`} role="alert">
          <h3> İşlem başlatıldı!</h3> <br/>
          Kayıtlar kısmından işlemlerinizi takip edebilirsiniz. <br/>

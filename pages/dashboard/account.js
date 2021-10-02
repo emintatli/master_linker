@@ -113,9 +113,8 @@ export default function Account(props) {
             <button onClick={send_logout_req} className="btn btn-outline-danger btn-sm mb-2" disabled={loading}><i className="fas fa-sign-out-alt"></i> Çıkış Yap</button>
 
             <div className="d-flex flex-column mt-4 border-dotted-danger p-2">
-            <button disabled={true} onClick={send_log_delete_req} className="btn btn-danger btn-sm mb-2" ><i className="fas fa-exclamation-triangle"></i> Kayıtları Sil</button>
-            <button disabled={true} onClick={send_reboot_req} className="btn btn-danger btn-sm mb-2"><i className="fas fa-exclamation-triangle"></i> Sunucu Reboot</button>
-            DEMO da aktif değildir.
+            <button onClick={send_log_delete_req} className="btn btn-danger btn-sm mb-2" disabled={loading}><i className="fas fa-exclamation-triangle"></i> Kayıtları Sil</button>
+            <button  onClick={send_reboot_req} className="btn btn-danger btn-sm mb-2" disabled={loading}><i className="fas fa-exclamation-triangle"></i> Sunucu Reboot</button>
             </div>
             </div>
           
