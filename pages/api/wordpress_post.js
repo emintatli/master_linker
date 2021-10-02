@@ -25,12 +25,8 @@ const wordpress={
             wordpress.browser=await puppeteer.launch({
                 headless:true,
                 defaultViewport: null,
-                args: ['--window-size=1920,1080','--no-sandbox','--ignore-certificate-errors',  '--disable-setuid-sandbox','--blink-settings=imagesEnabled=false',
-                '--disable-dev-shm-usage',
-                '--disable-accelerated-2d-canvas',
-                '--no-first-run',
-                '--disable-gpu',
-                '--no-zygote'],
+                args: ['--window-size=1920,1080','--no-sandbox','--blink-settings=imagesEnabled=false'],
+                slowMo: 5
             });
           }
           catch(err){
@@ -41,7 +37,6 @@ const wordpress={
         wordpress.page=await wordpress.browser.newPage();
         let userAgent = new UserAgent();
        await wordpress.page.setUserAgent(userAgent.toString())
-       await wordpress.page.setDefaultNavigationTimeout(20000); 
        }
        catch(err){
         await wordpress.browser.close();
