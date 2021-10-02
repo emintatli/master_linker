@@ -28,7 +28,7 @@ const wordpress={
         wordpress.browser=await puppeteer.launch({
             headless:true,
             defaultViewport: null,
-            args: ['--window-size=1920,1080','--no-sandbox'],
+            args: ['--window-size=1920,1080','--no-sandbox','--ignore-certificate-errors','--blink-settings=imagesEnabled=false'],
             slowMo:10,
         });
       }
@@ -41,7 +41,7 @@ const wordpress={
  
     let userAgent = new UserAgent();
    await wordpress.page.setUserAgent(userAgent.toString())
- 
+   await wordpress.page.setDefaultNavigationTimeout(5000); 
 },
     comment:async(BASE_URL,COMMENT_TEXT,AUTHOR,USER_EMAIL,USER_URL,DELAY)=>{
      

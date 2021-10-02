@@ -31,7 +31,7 @@ const main_wp_post=async(captcha_TOKEN,random_text_gen,proxy_list,do_list,user)=
         await wp_post.initialize(selected_proxy,captcha_TOKEN);
        const result_a0= await wp_post.comment(do_list[i].BASE_URL,!random_text_gen.COMMENT_TEXT?do_list[i].COMMENT_TEXT:txtgen.sentence(),
         !random_text_gen.AUTHOR?do_list[i].AUTHOR:random_name(),!random_text_gen.USER_EMAIL?do_list[i].USER_EMAIL:randomEmail(),
-        do_list[i].USER_URL,!random_text_gen.DELAY?do_list[i].DELAY:randomIntFromInterval(0, 50));
+        do_list[i].USER_URL,!random_text_gen.DELAY?do_list[i].DELAY:randomIntFromInterval(0, 5));
         
         const _data = {user:user,url:result_a0.url,time:Date.now() }
         if(result_a0.status==="success"){
