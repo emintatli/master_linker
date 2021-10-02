@@ -6,51 +6,57 @@ const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 const UserAgent = require('user-agents');
 const cheerio = require('cheerio');
+
 const wordpress={
     browser:null,
     page:null,
     initialize:async(proxy,captcha_TOKEN)=>{
-  
-    puppeteer.use(pluginProxy(proxy));
-    puppeteer.use(AdblockerPlugin())
-    puppeteer.use(StealthPlugin())
-    puppeteer.use(require('puppeteer-extra-plugin-block-resources')({
-        blockedTypes: new Set(['image', 'stylesheet'])
-      }))
-    puppeteer.use(
-        RecaptchaPlugin({
-          provider: { id: '2captcha', token: captcha_TOKEN },
-          visualFeedback: false // colorize reCAPTCHAs (violet = detected, green = solved)
-        })
-      )
+       try{
+        puppeteer.use(pluginProxy(proxy));
+        puppeteer.use(AdblockerPlugin())
+        puppeteer.use(StealthPlugin())
+        puppeteer.use(
+            RecaptchaPlugin({
+              provider: { id: '2captcha', token: captcha_TOKEN },
+              visualFeedback: false // colorize reCAPTCHAs (violet = detected, green = solved)
+            })
+          )
+          try{
+            wordpress.browser=await puppeteer.launch({
+                headless:true,
+                defaultViewport: null,
+                args: ['--window-size=1920,1080','--no-sandbox','--ignore-certificate-errors',  '--disable-setuid-sandbox','--blink-settings=imagesEnabled=false',
+                '--disable-dev-shm-usage',
+                '--disable-accelerated-2d-canvas',
+                '--no-first-run',
+                '--disable-gpu',
+                '--no-zygote'],
+            });
+          }
+          catch(err){
+              console.log(err)
+              await wordpress.browser.close();
+          }
     
-      try{
-        wordpress.browser=await puppeteer.launch({
-            headless:true,
-            defaultViewport: null,
-            args: ['--window-size=1920,1080','--no-sandbox','--ignore-certificate-errors','--blink-settings=imagesEnabled=false'],
-            slowMo:10,
-        });
-      }
-      catch(err){
-          console.log(err)
-      }
-
+        wordpress.page=await wordpress.browser.newPage();
+        let userAgent = new UserAgent();
+       await wordpress.page.setUserAgent(userAgent.toString())
+       await wordpress.page.setDefaultNavigationTimeout(20000); 
+       }
+       catch(err){
+        await wordpress.browser.close();
+           console.log(err)
+       }
    
-    wordpress.page=await wordpress.browser.newPage();
- 
-    let userAgent = new UserAgent();
-   await wordpress.page.setUserAgent(userAgent.toString())
-   await wordpress.page.setDefaultNavigationTimeout(5000); 
 },
     comment:async(BASE_URL,COMMENT_TEXT,AUTHOR,USER_EMAIL,USER_URL,DELAY)=>{
-     
-        enchantPuppeteer()
         
+       
+        enchantPuppeteer()
+    
         try{
-           
             await wordpress.page.goto(BASE_URL,{ waitUntil:"networkidle2"});
-            
+           
             await wordpress.page.type('textarea[id="comment"]',COMMENT_TEXT,{
                 delay:DELAY
             })
@@ -76,12 +82,12 @@ const wordpress={
                if(cheer("a").first().attr('href')!==undefined && cheer("a").first().attr('href')!==null){
                 const link2= await wordpress.page.$(`a[href*="${cheer("a").first().attr('href')}"]`);
                 if(link2){
-                    console.log("ok buldum")
+                   
                     link=true;
                 }
                }
                else{
-                   console.log("2.asdasdas")
+                   
                  element = await wordpress.page.$x(`//*[contains(text(),"${COMMENT_TEXT}")]`)
                }
                 
@@ -106,11 +112,15 @@ const wordpress={
             
             catch(err){
                 console.log(err)
+                await wordpress.browser.close();
                 return {url:BASE_URL,status:"pending"}
             }
         }
         catch(err){
-            console.log(err)
+           
+            
+           await wordpress.browser.close();
+            
             return {url:BASE_URL,status:"error"}
         }
         finally{
@@ -118,7 +128,6 @@ const wordpress={
            await wordpress.browser.close();
             
         }
-       
     }
 }
 
