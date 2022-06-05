@@ -1,14 +1,14 @@
 ### Master Linker web scrapping & link building tool on web.
 
 ###Features
-->Captcha bypass
-->Automatic backlink building.
-->Bulk import backlink sources.
-->Server operations (restart,cpu usage,ram usage etc.)
-->Proxy support
-->Random feature.
-->Log system
-->License system
+->Captcha bypass	
+->Automatic backlink building.	
+->Bulk import backlink sources.	
+->Server operations (restart,cpu usage,ram usage etc.)	
+->Proxy support	
+->Random feature.	
+->Log system	
+->License system	
 
 ### Tech Stack
 ->Next.js
